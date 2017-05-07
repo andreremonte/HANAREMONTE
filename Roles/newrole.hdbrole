@@ -1,0 +1,26 @@
+role PurchasesOrdes.Roles::newrole {
+
+// Shema Privileges
+
+	catalog schema	"_SYS_BIC" : SELECT, EXECUTE;
+	catalog schema	"_SYS_REPO" : SELECT, EXECUTE;
+	
+
+sql	object	PurchasesOrdes.data::PO.Header : SELECT, INSERT, UPDATE, DELETE ;
+
+sql	object	PurchasesOrdes.data::PO.Item : SELECT, INSERT, UPDATE, DELETE ;
+
+sql	object	PurchasesOrdes.data::PO.Partner : SELECT, INSERT, UPDATE, DELETE ;
+
+sql	object	PurchasesOrdes.data::PO.Product : SELECT, INSERT, UPDATE, DELETE ;
+
+sql	object	PurchasesOrdes.data::PO.User : SELECT, INSERT, UPDATE, DELETE ;
+	
+
+//	SYSTEM PRIVILEGES
+
+system	privilege: BACKUP ADMIN, USER ADMIN ;
+
+application privilege: PurchasesOrdes::Execute, PurchasesOrdes::Admin;
+
+}

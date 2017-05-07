@@ -30,7 +30,7 @@ entity	Header {
 		ITEMS			: association [*] to Item on ITEMS.PURCHASEORDERID = PURCHASEORDERID;
 		HISTORY			: HistoryT;
 		NOTEID			: BusinessKey null;
-		PARTNER 		: BusinessKey; 
+		PARTNER 		: association to Partner; 
 		CURRENCY		: CurrencyT;
 		GROSSAMOUNT		: AmountT;
 		NETAMOUNT		: AmountT;
@@ -62,7 +62,26 @@ entity	Item {
 }
 
 
+/**
+*  User Entity
+*/	
+@Catalog.tableType: #COLUMN
+entity	User {
+	Key	USERID	: BusinessKey;
+		NAME	: MediumText;
+		
+		}
+		
 
+/**
+*  Partner Entity
+*/	
+@Catalog.tableType: #COLUMN
+entity	Partner {
+	Key	PARTNERID	: BusinessKey;
+		NAME		: MediumText;
+		
+		}		
 /**
 *  Produto Entity
 */	
@@ -80,7 +99,7 @@ define view ItemView as select from Item
 {
 		PURCHASEORDERID		as  "PurchaseOrderItemId",
 		PURCHASEORDERITEM	as  "ItemPos",
-		HEADER.PARTNER		as 	"PartnerId",		
+		HEADER.PARTNER.PARTNERID	as 	"PartnerId",		
 		CURRENCY			as 	"CurrencyCode",
 		GROSSAMOUNT			as	"GrossAmount",
 		NETAMOUNT			as	"NetAmounf",

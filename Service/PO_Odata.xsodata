@@ -1,0 +1,9 @@
+service	{	
+    "SYSTEM"."PurchasesOrdes.data::PO.Product"  as "product"; 
+    
+    }  // Products table - Alias }
+													
+//	Key	("PRODUCTID"); 
+	
+
+	
